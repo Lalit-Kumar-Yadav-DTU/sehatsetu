@@ -31,7 +31,8 @@ const CreateCourse = () => {
     try {
       // Calling your brand new backend route! 
       // const response = await fetch('https://sehatsetu-api.onrender.com/api/programs/createCourse', {    
-      const response = await fetch('http://localhost:5000/api/programs/createCourse', {
+      // const response = await fetch('http://localhost:5000/api/programs/createCourse', {
+      const response = await fetch(`${import.meta.env.VITE_API_URL || 'http://localhost:5000'}/api/programs/createCourse`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

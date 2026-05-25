@@ -31,7 +31,8 @@ const ResetPassword = () => {
     setLoading(true);
     try {
       // const { data } = await axios.put(`https://sehatsetu-api.onrender.com/api/auth/resetpassword/${token}`, { password });
-      const { data } = await axios.put(`http://localhost:5000/api/auth/resetpassword/${token}`, { password });
+      // const { data } = await axios.put(`http://localhost:5000/api/auth/resetpassword/${token}`, { password });
+      const { data } = await axios.put(`${import.meta.env.VITE_API_URL || 'http://localhost:5000'}/api/auth/resetpassword/${token}`, { password });
       alert(data.message);
       navigate('/login'); 
     } catch (error) {

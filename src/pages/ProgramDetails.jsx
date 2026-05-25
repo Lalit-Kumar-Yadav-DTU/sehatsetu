@@ -51,10 +51,12 @@ const ProgramDetails = () => {
 
     try {
       // const { data: { key } } = await axios.get("https://sehatsetu-api.onrender.com/api/payment/getkey");
-      const { data: { key } } = await axios.get("http://localhost:5000/api/payment/getkey");
+      // const { data: { key } } = await axios.get("http://localhost:5000/api/payment/getkey");
+      const { data: { key } } = await axios.get(`${import.meta.env.VITE_API_URL || 'http://localhost:5000'}/api/payment/getkey`);
 
       // const { data: { order } } = await axios.post("https://sehatsetu-api.onrender.com/api/payment/checkout", {
-      const { data: { order } } = await axios.post("http://localhost:5000/api/payment/checkout", {
+      // const { data: { order } } = await axios.post("http://localhost:5000/api/payment/checkout", {
+      const { data: { order } } = await axios.post(`${import.meta.env.VITE_API_URL || 'http://localhost:5000'}/api/payment/checkout`, {
         amount: program.price,
         userId: user._id,       
         programId: program._id  
@@ -73,7 +75,8 @@ const ProgramDetails = () => {
           try {
             // 1. Verify payment with your backend
             // await axios.post("https://sehatsetu-api.onrender.com/api/payment/paymentverification", {
-            await axios.post("http://localhost:5000/api/payment/paymentverification", {
+            // await axios.post("http://localhost:5000/api/payment/paymentverification", {
+            await axios.post(`${import.meta.env.VITE_API_URL || 'http://localhost:5000'}/api/payment/paymentverification`, {
               ...response,
               userId: user._id,
               programId: program._id
