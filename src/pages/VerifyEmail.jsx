@@ -51,7 +51,7 @@ const VerifyEmail = () => {
           <div>
             <h2 style={{ color: '#dc2626' }}>❌ Verification Failed</h2>
             <p style={{ color: '#666' }}>{message}</p>
-            <button onClick={() => navigate('/register')} style={{ marginTop: '15px', background: '#15803d', color: 'white', padding: '10px 20px', border: 'none', borderRadius: '5px', cursor: 'pointer' }}>
+            <button onClick={() => navigate('/signup')} style={{ marginTop: '15px', background: '#15803d', color: 'white', padding: '10px 20px', border: 'none', borderRadius: '5px', cursor: 'pointer' }}>
               Back to Registration
             </button>
           </div>
