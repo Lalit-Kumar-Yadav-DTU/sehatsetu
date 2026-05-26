@@ -1,4 +1,5 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import VerifyEmail from './pages/VerifyEmail';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 
@@ -37,6 +38,7 @@ function App() {
             <Route path="/program/:id" element={<ProgramDetails />} />
 
             {/* Auth & User Routes */}
+            <Route path="/verify-email/:token" element={<VerifyEmail />} />
             <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<Signup />} />
             <Route path="/dashboard" element={<Dashboard />} />
