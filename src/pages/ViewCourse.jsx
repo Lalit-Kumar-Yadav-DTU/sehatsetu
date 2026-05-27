@@ -27,30 +27,66 @@ const ViewCourse = () => {
     }
 
     const fetchFullCourse = async () => {
-      try {
-        // We use the DEEP POPULATE endpoint we verified earlier!
-        const response = await axios.post(`${API_URL}/api/programs/getFullProgramDetails`, {
-          programId: id
-        });
-
-        if (response.data.success) {
-          const course = response.data.data;
-          setCourseData(course);
-          
-          // Auto-play the very first video in the first section if it exists
-          if (course.courseContent?.length > 0 && course.courseContent[0].subSection?.length > 0) {
-            setActiveVideo(course.courseContent[0].subSection[0]);
-          }
-        } else {
-          setError('Failed to load course details.');
-        }
-      } catch (err) {
-        console.error(err);
-        setError('You might not have access, or the course does not exist.');
-      } finally {
-        setLoading(false);
-      }
+  try {
+    // 👇 1. Set up the config containing your user's token
+    const config = {
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${user?.token}`, // Pulls the JWT token dynamically from Redux
+      },
     };
+
+    // 2. Pass the config as the third argument in your axios.post request
+    const response = await axios.post(
+      `${API_URL}/api/programs/getFullProgramDetails`, 
+      { programId: id },
+      config // 👈 ADDED HERE
+    );
+
+    if (response.data.success) {
+      const course = response.data.data;
+      setCourseData(course);
+      
+      if (course.courseContent?.length > 0 && course.courseContent[0].subSection?.length > 0) {
+        setActiveVideo(course.courseContent[0].subSection[0]);
+      }
+    } else {
+      setError('Failed to load course details.');
+    }
+  } catch (err) {
+    console.error("🔥 Classroom Fetch Error:", err);
+    // Modified temporarily to show the actual server message if available to help you debug!
+    setError(err.response?.data?.message || 'You might not have access, or the course does not exist.');
+  } finally {
+    setLoading(false);
+  }
+};
+
+    // const fetchFullCourse = async () => {
+    //   try {
+    //     // We use the DEEP POPULATE endpoint we verified earlier!
+    //     const response = await axios.post(`${API_URL}/api/programs/getFullProgramDetails`, {
+    //       programId: id
+    //     });
+
+    //     if (response.data.success) {
+    //       const course = response.data.data;
+    //       setCourseData(course);
+          
+    //       // Auto-play the very first video in the first section if it exists
+    //       if (course.courseContent?.length > 0 && course.courseContent[0].subSection?.length > 0) {
+    //         setActiveVideo(course.courseContent[0].subSection[0]);
+    //       }
+    //     } else {
+    //       setError('Failed to load course details.');
+    //     }
+    //   } catch (err) {
+    //     console.error(err);
+    //     setError('You might not have access, or the course does not exist.');
+    //   } finally {
+    //     setLoading(false);
+    //   }
+    // };
 
     fetchFullCourse();
   }, [id, user, navigate, API_URL]);

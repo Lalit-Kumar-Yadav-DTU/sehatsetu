@@ -2,6 +2,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import VerifyEmail from './pages/VerifyEmail';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
+import AIWellness from './pages/AIWellness';
 
 // Importing your pages (Fixed Capitalization for Deployment!)
 import Home from './pages/Home';
@@ -38,6 +39,7 @@ function App() {
             <Route path="/program/:id" element={<ProgramDetails />} />
 
             {/* Auth & User Routes */}
+            <Route path="/ai-wellness" element={<AIWellness />} />
             <Route path="/verify-email/:token" element={<VerifyEmail />} />
             <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<Signup />} />
