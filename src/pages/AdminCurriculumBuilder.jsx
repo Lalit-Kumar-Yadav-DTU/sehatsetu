@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 const AdminCurriculumBuilder = () => {
   // 🌍 PRODUCTION READY: Dynamic API Base URL
   // It will use your Render URL when live, and localhost when you are coding on your laptop!
-  const API_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:5000';
+  const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
 
   // 1. State for fetching courses for the dropdown
   const [courses, setCourses] = useState([]);
