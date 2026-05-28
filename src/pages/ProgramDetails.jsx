@@ -130,7 +130,7 @@ const ProgramDetails = () => {
           
           <div className="lg:w-3/5">
             <img 
-              src={program.image || "https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?auto=format&fit=crop&w=800&q=80"} 
+              src={program.image || "https://serenecommunities.in/wp-content/uploads/2021/09/cpc.jpg"} 
               alt={program.title} 
               className="w-full h-[400px] object-cover"
             />

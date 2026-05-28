@@ -119,7 +119,7 @@ const Login = () => {
 
         <div className="w-full md:w-1/2 relative">
           <img 
-             src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?auto=format&fit=crop&w=800&q=80"
+             src="https://serenecommunities.in/wp-content/uploads/2021/09/cpc.jpg"
              alt="Senior Wellness"
              className="w-full rounded-2xl shadow-2xl relative z-10"
           />
